@@ -13,30 +13,41 @@ import com.device.manager.devicemanager.respository.UsersRespository;
 public class UsersServices {
 	
 	@Autowired
-	UsersRespository loginRespository;
+	UsersRespository usersRespository;
+	
+	public boolean  getLogin(String userName,String password){
+		if(usersRespository.findByuserName(userName) != null && usersRespository.findBypassword(password) != null) {
+			 return true;
+		}else{
+			 return false;
+		}		
+	}
+	
+	
+	
 	
 	public List<Users> getAllUsers(){
-	 return loginRespository.findAll();
+	 return usersRespository.findAll();
   	}
 	
 	public Users getUsersById(int id){
-		return loginRespository.findById(id).get();
+		return usersRespository.findById(id).get();
 	}
 	
 	public void saveUsers(Users users){
-		loginRespository.save(users); 
+		usersRespository.save(users); 
 	}
 	
 	public void deleteUsersById(int id){
-		loginRespository.deleteById(id);
+		usersRespository.deleteById(id);
 	}
 	
 	public void deleteUsers(Users users){
-		loginRespository.delete(users);
+		usersRespository.delete(users);
 	}
 	
 	public void deleteAllUsers(){
-		loginRespository.deleteAll();
+		usersRespository.deleteAll();
 	}
 
 }

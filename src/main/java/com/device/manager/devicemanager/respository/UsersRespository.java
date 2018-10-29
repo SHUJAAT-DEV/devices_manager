@@ -8,5 +8,6 @@ import com.device.manager.devicemanager.model.Users;
 
 @Repository
 public interface UsersRespository extends JpaRepository<Users, Integer>{
-
+	Users findByuserName(String userName);
+	Users findBypassword(String password);
 }
